@@ -1,0 +1,33 @@
+.navbar nav{
+    font-family: 'lucida handwriting' !important;
+    background-color: purple !important;
+    box-shadow: 0 2px 10px rgb(56, 1, 56);
+}
+
+.navbar nav span{
+    font-size: 2rem;
+}
+
+.logo{
+    width: 120px;
+    margin: 0 0 0.2em 0;
+}
+
+.toggle-navigation{
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.toggle-navigation a {
+    width: 90% !important;
+    
+}
+
+.toggle-navigation a li{
+    font-size: 20px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+}

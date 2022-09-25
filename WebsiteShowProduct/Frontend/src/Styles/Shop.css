@@ -1,0 +1,33 @@
+.shop h1{
+    font-family: 'lucida handwriting';
+    box-sizing: border-box;
+}
+
+.product-image{
+    border-radius: 10px;
+}
+
+.card-container{
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 2em;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
+    grid-gap: 1.2em;
+}
+
+.card-container label{
+    font-size: x-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-container > div{
+    background: rgba(146, 130, 146, 0.431);
+    max-width: 400px;
+}
+
+.card-container > div > div:nth-child(3){
+    display: flex;
+    justify-content: space-between;
+}
