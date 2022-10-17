@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiNegozio.Controllers
 {
-    [Route("api/prodotti")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProdottiController : ControllerBase
     {
@@ -27,18 +27,40 @@ namespace ApiNegozio.Controllers
         [HttpGet("{id}")]
         public ActionResult Get(int id)
         {
-            var prodotto = _model.Prodotti.FirstOrDefault(f => f.IdPrdt.Equals(id));
+            var prodotto = _model.Prodotti.FirstOrDefault(f => f.IdPrdt == id);
             if (prodotto == null) return NotFound("Podotto non trovato");
 
             return Ok(prodotto);
         }
 
+        // GET: prendo tutti i prodotti di un certo fornitore
+        // api/prodotti/{nome}
+        /*[HttpGet("{nome}")]
+        public ActionResult GetAllProducts(string nome)
+        {
+            Fornitore id = _model.Fornitori.FirstOrDefault(f => f.Nome == nome);
+            if (id == null) { return NotFound("fornitore non trovato."); }
+
+            List<TaglieFornitori> prodottiFornitori = _model.TaglieFornitori.Where(w => w.IdFrntr == id.IdFrntr).ToList();
+            if (prodottiFornitori == null) return NotFound();
+
+
+            List<Prodotto> prodotti = new List<Prodotto>();
+
+            foreach (var item in prodottiFornitori)
+            {
+                prodotti.Add(_model.Prodotti.FirstOrDefault(f => f.IdPrdt == item.IdPrdt));
+            }
+
+            return Ok(prodotti);
+        }*/
+
         // POST: inserimento nuovo prodotto
         [HttpPost]
         public ActionResult Post([FromBody] Prodotto nuovoProdotto)
         {
-            var verificaPresente = _model.Prodotti.FirstOrDefault(f => f.Nome.Equals(nuovoProdotto.Nome)
-                                                                        && f.ImgUrl.Equals(nuovoProdotto.ImgUrl));
+            var verificaPresente = _model.Prodotti.FirstOrDefault(f => f.Nome == nuovoProdotto.Nome
+                                                                        && f.ImgUrl == nuovoProdotto.ImgUrl);
             if(verificaPresente != null) { return Problem("Un prodotto con lo stesso nome e immagine è già stato inserito, cambia nome o immagine"); }
 
             _model.Prodotti.Add(nuovoProdotto);
@@ -47,10 +69,11 @@ namespace ApiNegozio.Controllers
         }
 
         // PUT: modifica di un prodotto
+        // api/prodotti/3
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Prodotto prodottoDaModificare)
         {
-            Prodotto presente = _model.Prodotti.FirstOrDefault(f => f.IdPrdt.Equals(id));
+            Prodotto presente = _model.Prodotti.FirstOrDefault(f => f.IdPrdt == id);
             if(presente == null) { return NotFound("Prodotto non presente, non posso modificarlo."); }
 
             presente.Nome = prodottoDaModificare.Nome;
@@ -67,10 +90,11 @@ namespace ApiNegozio.Controllers
         }
 
         // DELETE: eliminazione di un prodotto
+        // api/prodotti/44
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            var presente = _model.Prodotti.FirstOrDefault(f => f.IdPrdt.Equals(id));
+            var presente = _model.Prodotti.FirstOrDefault(f => f.IdPrdt == id);
             if(presente == null) { return NotFound("Prodotto non presente, non posso eliminarlo."); }
 
             _model.Remove(presente);

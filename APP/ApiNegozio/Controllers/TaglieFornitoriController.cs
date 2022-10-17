@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using ApiNegozio.Models;
 
 namespace ApiNegozio.Controllers
@@ -42,53 +36,35 @@ namespace ApiNegozio.Controllers
         [HttpGet("{id}")]
         public ActionResult GetTaglieFornitori(int id)
         {
-            var taglieFornitori = _model.TaglieFornitori.FirstOrDefault(f=>f.IdTglFr.Equals(id));
+            var taglieFornitori = _model.TaglieFornitori.FirstOrDefault(f=>f.IdTglFr == id);
             if (taglieFornitori == null) { return NotFound("Nessun record trovato."); }
 
             return Ok(taglieFornitori);
         }
 
-        // GET: prendo tutti i prodotti di un certo fornitore
-        [HttpGet("/api/prodottiFornitore/{nome}")]
-        public ActionResult GetAllProducts(string nome)
-        {
-            Fornitore id = _model.Fornitori.FirstOrDefault(f => f.Nome.Equals(nome));
-            if(id == null) { return NotFound("fornitore non trovato."); }
-
-            List<TaglieFornitori> prodottiFornitori = _model.TaglieFornitori.Where(w => w.IdFrntr.Equals(id.IdFrntr)).ToList();
-            if (prodottiFornitori == null) return NotFound();
-
-
-            List<Prodotto> prodotti = new List<Prodotto>();
-
-            foreach (var item in prodottiFornitori)
-            {
-                prodotti.Add(_model.Prodotti.FirstOrDefault(f => f.IdPrdt == item.IdPrdt));
-            }
-
-            return Ok(prodotti);
-        }
+        
 
         // GET: prendo tutte le taglie di un certo fornitore
-        [HttpGet("/api/taglieFornitore/{nome}")]
+        // api/TaglieFornitori/{nome}
+        /*[HttpGet("{nome}")]
         public ActionResult GetAllSizes(string nome)
         {
-            Fornitore id = _model.Fornitori.FirstOrDefault(f => f.Nome.Equals(nome));
-            if (id == null) { return NotFound("fornitore non trovato."); }
+            Fornitore fornitore = _model.Fornitori.FirstOrDefault(f => f.Nome == nome);
+            if (fornitore == null) { return NotFound("fornitore non trovato."); }
 
-            List<TaglieFornitori> taglieFornitore = _model.TaglieFornitori.Where(f => f.IdFrntr.Equals(id.IdFrntr)).ToList();
+            List<TaglieFornitori> taglieFornitore = _model.TaglieFornitori.Where(f => f.IdFrntr == fornitore.IdFrntr).ToList();
             if (taglieFornitore == null) { return NotFound("Nessuna taglia per questo fornitore."); }
 
             List<Taglia> taglie = new List<Taglia>();
             foreach (var item in taglieFornitore)
             {
-                Taglia check = _model.Taglia.FirstOrDefault(w => w.IdTaglia.Equals(item.IdTaglia));
+                Taglia check = _model.Taglia.FirstOrDefault(w => w.IdTaglia == item.IdTaglia);
                 if(check == null) { return NotFound("Taglia inesistente."); }
                 taglie.Add(check);
             }
 
             return Ok(taglie);
-        }
+        }*/
 
         // PUT: api/TaglieFornitori/5
         [HttpPut("{id}")]
@@ -96,7 +72,7 @@ namespace ApiNegozio.Controllers
         {
             if (id != taglieFornitori.IdTglFr) return BadRequest();
 
-            var record = _model.TaglieFornitori.FirstOrDefault(f => f.IdTglFr.Equals(id));
+            var record = _model.TaglieFornitori.FirstOrDefault(f => f.IdTglFr == id);
             if (record == null) return NotFound();
 
             record.IdFrntr = taglieFornitori.IdFrntr;
@@ -121,7 +97,7 @@ namespace ApiNegozio.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteTaglieFornitori(int id)
         {
-            var record = _model.TaglieFornitori.FirstOrDefault(f => f.IdTglFr.Equals(id));
+            var record = _model.TaglieFornitori.FirstOrDefault(f => f.IdTglFr == id);
             if (record == null) return NotFound("Impossibile eliminare, non trovato");
 
             _model.Remove(record);

@@ -27,7 +27,7 @@ namespace ApiNegozio.Controllers
         [HttpGet("{id}")]
         public ActionResult GetTaglia(int id)
         {
-            var taglie = _model.Taglia.FirstOrDefault(f => f.IdTaglia.Equals(id));
+            var taglie = _model.Taglia.FirstOrDefault(f => f.IdTaglia == id);
             if (taglie == null) { return NotFound("Nessuna taglia trovata."); }
 
             return Ok(taglie);
@@ -37,7 +37,7 @@ namespace ApiNegozio.Controllers
         [HttpPut("{id}")]
         public ActionResult PutTaglia(int id, Taglia taglia)
         {
-            var record = _model.Taglia.FirstOrDefault(f => f.IdTaglia.Equals(id));
+            var record = _model.Taglia.FirstOrDefault(f => f.IdTaglia == id);
             if (record == null) return NotFound();
 
             record.TagliaVestito = taglia.TagliaVestito;
@@ -58,7 +58,7 @@ namespace ApiNegozio.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteTaglia(int id)
         {
-            var record = _model.Taglia.FirstOrDefault(f => f.IdTaglia.Equals(id));
+            var record = _model.Taglia.FirstOrDefault(f => f.IdTaglia == id);
             if (record == null) return NotFound("Impossibile eliminare, non trovato");
                 
             _model.Remove(record);

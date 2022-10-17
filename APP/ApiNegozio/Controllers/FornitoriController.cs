@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using ApiNegozio.Models;
 
 namespace ApiNegozio.Controllers
@@ -33,7 +27,7 @@ namespace ApiNegozio.Controllers
         [HttpGet("{id}")]
         public ActionResult GetFornitore(int id)
         {
-            var fornitore = _model.Fornitori.FirstOrDefault(f => f.IdFrntr.Equals(id));
+            var fornitore = _model.Fornitori.FirstOrDefault(f => f.IdFrntr == id);
             if (fornitore == null) { return NotFound("Nessun Fornitore trovato."); }
 
             return Ok(fornitore);
@@ -43,7 +37,7 @@ namespace ApiNegozio.Controllers
         [HttpPut("{id}")]
         public ActionResult PutFornitore(int id, [FromBody] Fornitore fornitore)
         {
-            var record = _model.Fornitori.FirstOrDefault(f => f.IdFrntr.Equals(id));
+            var record = _model.Fornitori.FirstOrDefault(f => f.IdFrntr == id);
             if (record == null) return NotFound();
 
             record.Nome = fornitore.Nome;
@@ -64,7 +58,7 @@ namespace ApiNegozio.Controllers
         [HttpDelete("{id}")]
         public ActionResult DeleteFornitore(int id)
         {
-            var record = _model.Fornitori.FirstOrDefault(f => f.IdFrntr.Equals(id));
+            var record = _model.Fornitori.FirstOrDefault(f => f.IdFrntr == id);
             if (record == null) return NotFound("Impossibile eliminare, non trovato");
 
             _model.Remove(record);
