@@ -70,23 +70,23 @@ namespace ApiNegozio.Models
 
                 entity.ToTable("TaglieFornitori");
 
-                entity.HasOne(d => d.IdFrntrNavigation)
-                    .WithMany(p => p.TaglieFornitori)
-                    .HasForeignKey(d => d.IdFrntr)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TaglieFornitori_Fornitore");
+                //entity.HasOne(d => d.IdFrntrNavigation)
+                //    .WithMany(p => p.TaglieFornitori)
+                //    .HasForeignKey(d => d.IdFrntr)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_TaglieFornitori_Fornitore");
 
-                entity.HasOne(d => d.IdPrdtNavigation)
-                    .WithMany(p => p.TaglieFornitori)
-                    .HasForeignKey(d => d.IdPrdt)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TaglieFornitori_Prodotto");
+                //entity.HasOne(d => d.IdPrdtNavigation)
+                //    .WithMany(p => p.TaglieFornitori)
+                //    .HasForeignKey(d => d.IdPrdt)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_TaglieFornitori_Prodotto");
 
-                entity.HasOne(d => d.IdTagliaNavigation)
-                    .WithMany(p => p.TaglieFornitori)
-                    .HasForeignKey(d => d.IdTaglia)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TaglieFornitori_Taglia");
+                //entity.HasOne(d => d.IdTagliaNavigation)
+                //    .WithMany(p => p.TaglieFornitori)
+                //    .HasForeignKey(d => d.IdTaglia)
+                //    .OnDelete(DeleteBehavior.ClientSetNull)
+                //    .HasConstraintName("FK_TaglieFornitori_Taglia");
             });
 
             modelBuilder.Entity<Taglia>(entity =>

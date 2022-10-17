@@ -4,12 +4,12 @@
     {
         public Fornitore()
         {
-            TaglieFornitori = new HashSet<TaglieFornitori>();
+            //TaglieFornitori = new HashSet<TaglieFornitori>();
         }
 
         public int IdFrntr { get; set; }
         public string Nome { get; set; } = null!;
 
-        public virtual ICollection<TaglieFornitori> TaglieFornitori { get; set; }
+        //public virtual ICollection<TaglieFornitori> TaglieFornitori { get; set; }
     }
 }

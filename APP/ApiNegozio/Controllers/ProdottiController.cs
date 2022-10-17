@@ -1,5 +1,6 @@
 ﻿using ApiNegozio.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace ApiNegozio.Controllers
 {
@@ -35,25 +36,29 @@ namespace ApiNegozio.Controllers
 
         // GET: prendo tutti i prodotti di un certo fornitore
         // api/prodotti/{nome}
-        /*[HttpGet("{nome}")]
-        public ActionResult GetAllProducts(string nome)
+        [HttpGet("/api/prodottiFornitore/{id}")]
+        public ActionResult GetAllProducts(int id)
         {
-            Fornitore id = _model.Fornitori.FirstOrDefault(f => f.Nome == nome);
-            if (id == null) { return NotFound("fornitore non trovato."); }
+            Fornitore fornitore = _model.Fornitori.FirstOrDefault(f => f.IdFrntr == id);
+            if (fornitore == null) { return NotFound("fornitore non trovato."); }
 
-            List<TaglieFornitori> prodottiFornitori = _model.TaglieFornitori.Where(w => w.IdFrntr == id.IdFrntr).ToList();
-            if (prodottiFornitori == null) return NotFound();
+            List<TaglieFornitori> taglieFornitori = _model.TaglieFornitori.Where(w => w.IdFrntr == id).ToList();
+            if (taglieFornitori == null) return NotFound();
 
 
             List<Prodotto> prodotti = new List<Prodotto>();
 
-            foreach (var item in prodottiFornitori)
+            foreach (var item in taglieFornitori)
             {
-                prodotti.Add(_model.Prodotti.FirstOrDefault(f => f.IdPrdt == item.IdPrdt));
+                if (_model.Prodotti.Any(a => a.IdPrdt == item.IdPrdt))
+                {
+                    Prodotto prod = _model.Prodotti.FirstOrDefault(f => f.IdPrdt == item.IdPrdt);
+                    prodotti.Add(prod);
+                }
             }
 
             return Ok(prodotti);
-        }*/
+        }
 
         // POST: inserimento nuovo prodotto
         [HttpPost]
