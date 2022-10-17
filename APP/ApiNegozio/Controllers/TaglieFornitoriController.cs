@@ -33,23 +33,23 @@ namespace ApiNegozio.Controllers
         }
 
         // GET: api/TaglieFornitori/5
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public ActionResult GetTaglieFornitori(int id)
         {
             var taglieFornitori = _model.TaglieFornitori.FirstOrDefault(f=>f.IdTglFr == id);
             if (taglieFornitori == null) { return NotFound("Nessun record trovato."); }
 
             return Ok(taglieFornitori);
-        }
+        }*/
 
         
 
         // GET: prendo tutte le taglie di un certo fornitore
-        // api/TaglieFornitori/{nome}
-        /*[HttpGet("{nome}")]
-        public ActionResult GetAllSizes(string nome)
+        // api/TaglieFornitori/{id}
+        [HttpGet("{id}")]
+        public ActionResult GetAllSizes(int id)
         {
-            Fornitore fornitore = _model.Fornitori.FirstOrDefault(f => f.Nome == nome);
+            Fornitore fornitore = _model.Fornitori.FirstOrDefault(f => f.IdFrntr == id);
             if (fornitore == null) { return NotFound("fornitore non trovato."); }
 
             List<TaglieFornitori> taglieFornitore = _model.TaglieFornitori.Where(f => f.IdFrntr == fornitore.IdFrntr).ToList();
@@ -64,7 +64,7 @@ namespace ApiNegozio.Controllers
             }
 
             return Ok(taglie);
-        }*/
+        }
 
         // PUT: api/TaglieFornitori/5
         [HttpPut("{id}")]
