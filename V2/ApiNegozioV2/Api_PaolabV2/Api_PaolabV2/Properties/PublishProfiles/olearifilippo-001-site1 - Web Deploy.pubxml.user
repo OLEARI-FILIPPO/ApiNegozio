@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <History>True|2022-11-01T20:34:40.2898964Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="negozioAppConn">
+      <Value>Data Source=sql8003.site4now.net%3b Initial Catalog=db_a8d5d1_negozio%3b User Id=db_a8d5d1_negozio_admin%3b Password=Filippo05</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Api_PaolabV2.Models.db_a8d5d1_negozioContext">
+      <Value>Data Source=sql8003.site4now.net%3b Initial Catalog=db_a8d5d1_negozio%3b User Id=db_a8d5d1_negozio_admin%3b Password=Filippo05</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

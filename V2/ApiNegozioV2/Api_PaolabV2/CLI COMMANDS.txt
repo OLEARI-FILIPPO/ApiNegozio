@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "Server=sql8003.site4now.net; Database=db_a8d5d1_negozio; User Id=db_a8d5d1_negozio_admin; Password=Filippo05;" Microsoft.EntityFrameworkCore.SqlServer -o Models

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="D:\FILLO\C#\Negozio\API.NET6\ApiNegozioV2\Api_PaolabV2\Api_PaolabV2\obj\Release\net6.0\PubTmp\Out\" />
+  <dbfullsql path="D:\FILLO\C#\Negozio\API.NET6\ApiNegozioV2\Api_PaolabV2\Api_PaolabV2\obj\Release\net6.0\PubTmp\EFSQLScripts\Api_PaolabV2.Models.db_a8d5d1_negozioContext.sql" />
+</sitemanifest>

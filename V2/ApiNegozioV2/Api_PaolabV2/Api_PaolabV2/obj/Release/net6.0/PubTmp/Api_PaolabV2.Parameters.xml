@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="olearifilippo-001-site1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\FILLO\\C\#\\Negozio\\API\.NET6\\ApiNegozioV2\\Api_PaolabV2\\Api_PaolabV2\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="Api_PaolabV2.Models.db_a8d5d1_negozioContext" description="" value="Data Source=sql8003.site4now.net; Initial Catalog=db_a8d5d1_negozio; User Id=db_a8d5d1_negozio_admin; Password=Filippo05" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^D:\\FILLO\\C\#\\Negozio\\API\.NET6\\ApiNegozioV2\\Api_PaolabV2\\Api_PaolabV2\\obj\\Release\\net6\.0\\PubTmp\\EFSQLScripts\\Api_PaolabV2\.Models\.db_a8d5d1_negozioContext\.sql$" />
+  </parameter>
+</parameters>
